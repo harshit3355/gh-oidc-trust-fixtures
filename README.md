@@ -71,6 +71,8 @@ bash scripts/setup.sh   # pinned tools into ~/.cache/gh-oidc-trust-fixtures (ove
 python3 eval/run.py     # writes results/results.json and results/report.md
 ```
 
+The first `setup.sh` run takes about 35 minutes, mostly building KICS from source. Later runs reuse the tools, and the evaluation itself takes a few minutes. A fresh clone with an empty `TOOLS_DIR` reproduced the scores above exactly; only run metadata changed.
+
 `eval/run.py` exits non-zero if the proposed configuration produces any false positive, or misses a `security` or `apply-failure` case.
 
 Use the check in your own pipeline:
@@ -100,7 +102,7 @@ To add a case, edit `CASES` in `cases.py`, run `python3 cases.py`, then re-run t
 - Microsoft: [migrating federated credentials](https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects) and [flexible credential rules](https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials).
 - Related reports: checkov [#7610](https://github.com/bridgecrewio/checkov/pull/7610) and [#7627](https://github.com/bridgecrewio/checkov/pull/7627); terraform-provider-azuread [#1901](https://github.com/hashicorp/terraform-provider-azuread/issues/1901).
 
-The goal is to move the flexible-credential check and these cases upstream into checkov. Scanner versions are pinned, so results only change when a version is deliberately bumped.
+The goal is to move the flexible-credential check and these cases upstream into checkov: proposed as CKV_AZURE_252 in [bridgecrewio/checkov#7715](https://github.com/bridgecrewio/checkov/pull/7715) (issue [#7714](https://github.com/bridgecrewio/checkov/issues/7714)). Scanner versions are pinned, so results only change when a version is deliberately bumped.
 
 ## License
 
