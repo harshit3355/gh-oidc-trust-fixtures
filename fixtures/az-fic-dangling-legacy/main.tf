@@ -1,0 +1,15 @@
+resource "azuread_application_federated_identity_credential" "legacy" {
+  application_id = "/applications/00000000-0000-0000-0000-000000000000"
+  display_name   = "legacy"
+  audiences      = ["api://AzureADTokenExchange"]
+  issuer         = "https://token.actions.githubusercontent.com"
+  subject        = "repo:octo-org/octo-repo:ref:refs/heads/main"
+}
+
+resource "azuread_application_federated_identity_credential" "immutable" {
+  application_id = "/applications/00000000-0000-0000-0000-000000000000"
+  display_name   = "immutable"
+  audiences      = ["api://AzureADTokenExchange"]
+  issuer         = "https://token.actions.githubusercontent.com"
+  subject        = "repo:octo-org@123456/octo-repo@456789:ref:refs/heads/main"
+}

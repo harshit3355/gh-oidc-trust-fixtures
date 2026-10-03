@@ -1,0 +1,272 @@
+{
+  "aws-doc-legacy-branch": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Name-based subject pinned to one branch.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/"
+    ]
+  },
+  "aws-doc-immutable-branch": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Immutable subject pinned to one branch.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/",
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "aws-doc-immutable-environment": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Immutable subject pinned to one environment.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/"
+    ]
+  },
+  "aws-doc-immutable-any-ref": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Repo-bound by immutable IDs; any ref of that one repo.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-doc-immutable-via-variable": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Immutable subject supplied through a variable default.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/"
+    ]
+  },
+  "aws-doc-legacy-org-wildcard": {
+    "expect": "FAIL",
+    "kind": "policy",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Trusts every current and future repo under a recyclable owner name.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-doc-immutable-org-wildcard": {
+    "expect": "FAIL",
+    "kind": "policy",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Owner-bound by ID but trusts every repo of the owner.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-doc-owner-prefix-wildcard": {
+    "expect": "FAIL",
+    "kind": "security",
+    "target": "aws_iam_policy_document.trust",
+    "why": "repo:octo-org* also matches other owners such as octo-org-evil.",
+    "sources": [
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-doc-repo-wildcard": {
+    "expect": "FAIL",
+    "kind": "security",
+    "target": "aws_iam_policy_document.trust",
+    "why": "repo:* trusts any repository on GitHub.",
+    "sources": [
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-doc-bare-wildcard": {
+    "expect": "FAIL",
+    "kind": "security",
+    "target": "aws_iam_policy_document.trust",
+    "why": "sub * trusts any GitHub Actions token.",
+    "sources": [
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-doc-no-sub": {
+    "expect": "FAIL",
+    "kind": "security",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Only aud is checked; any GitHub Actions token can assume the role.",
+    "sources": []
+  },
+  "aws-doc-workflow-first-claim": {
+    "expect": "FAIL",
+    "kind": "security",
+    "target": "aws_iam_policy_document.trust",
+    "why": "Custom subject without a repo claim matches same-named workflows in other repos.",
+    "sources": []
+  },
+  "aws-role-legacy-branch": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_role.deploy",
+    "why": "Name-based subject pinned to one branch.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/"
+    ]
+  },
+  "aws-role-immutable-branch": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_role.deploy",
+    "why": "Immutable subject pinned to one branch.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/",
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "aws-role-immutable-environment": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "aws_iam_role.deploy",
+    "why": "Immutable subject pinned to one environment.",
+    "sources": [
+      "https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/"
+    ]
+  },
+  "aws-role-legacy-org-wildcard": {
+    "expect": "FAIL",
+    "kind": "policy",
+    "target": "aws_iam_role.deploy",
+    "why": "Trusts every current and future repo under a recyclable owner name.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html"
+    ]
+  },
+  "aws-role-no-sub": {
+    "expect": "FAIL",
+    "kind": "security",
+    "target": "aws_iam_role.deploy",
+    "why": "Only aud is checked; any GitHub Actions token can assume the role.",
+    "sources": []
+  },
+  "az-fic-legacy-branch": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "azuread_application_federated_identity_credential.gh",
+    "why": "Name-based subject pinned to one branch.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "az-fic-immutable-branch": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "azuread_application_federated_identity_credential.gh",
+    "why": "Immutable subject exactly as in the Microsoft migration guide.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "az-fic-immutable-environment": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "azuread_application_federated_identity_credential.gh",
+    "why": "Immutable subject pinned to one environment.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "az-fic-immutable-pull-request": {
+    "expect": "FAIL",
+    "kind": "policy",
+    "target": "azuread_application_federated_identity_credential.gh",
+    "why": "Repo-bound, but trusts every pull_request run, i.e. unreviewed code; debated upstream.",
+    "sources": [
+      "https://github.com/bridgecrewio/checkov/pull/7627"
+    ]
+  },
+  "az-fic-dangling-legacy": {
+    "expect": "FAIL",
+    "kind": "cross-resource",
+    "target": "azuread_application_federated_identity_credential.legacy",
+    "why": "Old name-based credential left beside its immutable replacement; Microsoft says to remove it.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "az-flex-sub-and-repo-id": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "sub plus repository_id, as in the Microsoft example.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  },
+  "az-flex-immutable-repo-and-owner-id": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "Immutable sub plus both ID claims.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-github-immutable-subjects"
+    ]
+  },
+  "az-flex-org-sub-and-owner-id": {
+    "expect": "PASS",
+    "kind": "guard",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "Owner-level trust bound by repository_owner_id; allowed by Microsoft.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  },
+  "az-flex-sub-and-workflow-ref-only": {
+    "expect": "FAIL",
+    "kind": "apply-failure",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "No repository_id/repository_owner_id: Entra rejects it (same shape as the azuread provider's docs example).",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  },
+  "az-flex-sub-only": {
+    "expect": "FAIL",
+    "kind": "apply-failure",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "GitHub expressions must also match an immutable claim.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  },
+  "az-flex-repo-id-only": {
+    "expect": "FAIL",
+    "kind": "apply-failure",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "GitHub expressions must match sub.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  },
+  "az-flex-repo-id-matches-operator": {
+    "expect": "FAIL",
+    "kind": "apply-failure",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "repository_id supports only eq.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  },
+  "az-flex-terraform-cloud-issuer": {
+    "expect": "PASS",
+    "kind": "control",
+    "target": "azuread_application_flexible_federated_identity_credential.gh",
+    "why": "Not a GitHub issuer; GitHub rules must not fire.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials"
+    ]
+  }
+}
