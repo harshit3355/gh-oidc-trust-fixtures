@@ -1,0 +1,624 @@
+{
+  "manifest": {
+    "run_at_utc": "2026-10-03T19:40:51+00:00",
+    "fixtures_commit": "30ce2f5",
+    "dirty": false,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python": "3.14.7",
+    "checkov": "3.3.21",
+    "kics": "Keeping Infrastructure as Code Secure v2.2.0",
+    "cases": 30,
+    "commands": {
+      "kics v2.2.0": "scan -p fixtures -q $KICS/assets/queries -o /tmp/tmp2d0grt8_ --report-formats json --output-name kics --type Terraform --disable-secrets --no-progress --silent",
+      "checkov 3.3.21 (built-in)": "-d fixtures --framework terraform -o json --compact --check CKV_AWS_358,CKV_AWS_393,CKV_AZURE_249",
+      "checkov 3.3.21 + PR #7610": "-d fixtures --framework terraform -o json --compact --check CKV_AWS_358,CKV_AWS_393,CKV_AZURE_249",
+      "proposed: checkov 3.3.21 + PR #7610 + CKV_GHOIDC_1": "-d fixtures --framework terraform -o json --compact --check CKV_AWS_358,CKV_AWS_393,CKV_AZURE_249,CKV_GHOIDC_1 --external-checks-dir checks"
+    }
+  },
+  "tools": {
+    "kics v2.2.0": {
+      "cases": {
+        "aws-doc-legacy-branch": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-branch": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-environment": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-any-ref": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-via-variable": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-doc-legacy-org-wildcard": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-doc-immutable-org-wildcard": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-doc-owner-prefix-wildcard": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-doc-repo-wildcard": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-doc-bare-wildcard": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-doc-no-sub": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-doc-workflow-first-claim": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-role-legacy-branch": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-branch": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-environment": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "aws-role-legacy-org-wildcard": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "aws-role-no-sub": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-fic-legacy-branch": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-branch": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-environment": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-pull-request": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-fic-dangling-legacy": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-sub-and-repo-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-immutable-repo-and-owner-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-org-sub-and-owner-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-sub-and-workflow-ref-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-sub-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-repo-id-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-repo-id-matches-operator": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-terraform-cloud-issuer": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        }
+      },
+      "summary": {
+        "TN": 15,
+        "FN": 15
+      },
+      "by_kind": {
+        "guard": {
+          "TN": 14
+        },
+        "policy": {
+          "FN": 4
+        },
+        "security": {
+          "FN": 6
+        },
+        "cross-resource": {
+          "FN": 1
+        },
+        "apply-failure": {
+          "FN": 4
+        },
+        "control": {
+          "TN": 1
+        }
+      },
+      "unrelated_queries_hit": [
+        "IAM Access Analyzer Not Enabled",
+        "Resource Not Using Tags",
+        "Variable Without Description",
+        "Variable Without Type"
+      ]
+    },
+    "checkov 3.3.21 (built-in)": {
+      "cases": {
+        "aws-doc-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-branch": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "aws-doc-immutable-environment": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "aws-doc-immutable-any-ref": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "aws-doc-immutable-via-variable": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "aws-doc-legacy-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-doc-immutable-org-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-owner-prefix-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-repo-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-bare-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-no-sub": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-workflow-first-claim": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-role-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-branch": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "aws-role-immutable-environment": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "aws-role-legacy-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-role-no-sub": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-fic-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-branch": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "az-fic-immutable-environment": {
+          "verdict": "FAIL",
+          "outcome": "FP"
+        },
+        "az-fic-immutable-pull-request": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-fic-dangling-legacy": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "az-flex-sub-and-repo-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-immutable-repo-and-owner-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-org-sub-and-owner-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-sub-and-workflow-ref-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-sub-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-repo-id-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-repo-id-matches-operator": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-terraform-cloud-issuer": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        }
+      },
+      "summary": {
+        "TN": 7,
+        "FP": 8,
+        "FN": 7,
+        "TP": 8
+      },
+      "by_kind": {
+        "guard": {
+          "TN": 6,
+          "FP": 8
+        },
+        "policy": {
+          "FN": 2,
+          "TP": 2
+        },
+        "security": {
+          "TP": 6
+        },
+        "cross-resource": {
+          "FN": 1
+        },
+        "apply-failure": {
+          "FN": 4
+        },
+        "control": {
+          "TN": 1
+        }
+      }
+    },
+    "checkov 3.3.21 + PR #7610": {
+      "cases": {
+        "aws-doc-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-environment": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-any-ref": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-via-variable": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-legacy-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-doc-immutable-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-doc-owner-prefix-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-repo-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-bare-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-no-sub": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-workflow-first-claim": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-role-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-environment": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-legacy-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-role-no-sub": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-fic-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-environment": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-pull-request": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "az-fic-dangling-legacy": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "az-flex-sub-and-repo-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-immutable-repo-and-owner-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-org-sub-and-owner-id": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        },
+        "az-flex-sub-and-workflow-ref-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-sub-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-repo-id-only": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-repo-id-matches-operator": {
+          "verdict": "NONE",
+          "outcome": "FN"
+        },
+        "az-flex-terraform-cloud-issuer": {
+          "verdict": "NONE",
+          "outcome": "TN"
+        }
+      },
+      "summary": {
+        "TN": 15,
+        "FN": 9,
+        "TP": 6
+      },
+      "by_kind": {
+        "guard": {
+          "TN": 14
+        },
+        "policy": {
+          "FN": 4
+        },
+        "security": {
+          "TP": 6
+        },
+        "cross-resource": {
+          "FN": 1
+        },
+        "apply-failure": {
+          "FN": 4
+        },
+        "control": {
+          "TN": 1
+        }
+      }
+    },
+    "proposed: checkov 3.3.21 + PR #7610 + CKV_GHOIDC_1": {
+      "cases": {
+        "aws-doc-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-environment": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-any-ref": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-immutable-via-variable": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-doc-legacy-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-doc-immutable-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-doc-owner-prefix-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-repo-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-bare-wildcard": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-no-sub": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-doc-workflow-first-claim": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "aws-role-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-immutable-environment": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "aws-role-legacy-org-wildcard": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "aws-role-no-sub": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-fic-legacy-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-branch": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-environment": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-fic-immutable-pull-request": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "az-fic-dangling-legacy": {
+          "verdict": "PASS",
+          "outcome": "FN"
+        },
+        "az-flex-sub-and-repo-id": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-flex-immutable-repo-and-owner-id": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-flex-org-sub-and-owner-id": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        },
+        "az-flex-sub-and-workflow-ref-only": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-flex-sub-only": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-flex-repo-id-only": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-flex-repo-id-matches-operator": {
+          "verdict": "FAIL",
+          "outcome": "TP"
+        },
+        "az-flex-terraform-cloud-issuer": {
+          "verdict": "PASS",
+          "outcome": "TN"
+        }
+      },
+      "summary": {
+        "TN": 15,
+        "FN": 5,
+        "TP": 10
+      },
+      "by_kind": {
+        "guard": {
+          "TN": 14
+        },
+        "policy": {
+          "FN": 4
+        },
+        "security": {
+          "TP": 6
+        },
+        "cross-resource": {
+          "FN": 1
+        },
+        "apply-failure": {
+          "TP": 4
+        },
+        "control": {
+          "TN": 1
+        }
+      }
+    }
+  }
+}
